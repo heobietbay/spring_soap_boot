@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://www.khoatrandang.learn/demo/common/1.0"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified" targetNamespace="http://www.khoatrandang.learn/demo/common/1.0">
+
+    <xsd:simpleType name="Char1">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="1" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Max40Text">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="40" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="LongPercent">
+        <xsd:restriction base="xsd:decimal">
+            <xsd:totalDigits value="7" />
+            <xsd:fractionDigits value="4" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="Max20Text">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="20" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="Percent0to100">
+        <xsd:restriction base="xsd:decimal">
+            <xsd:totalDigits value="5" />
+            <xsd:fractionDigits value="2" />
+            <xsd:minInclusive value="0.00" />
+            <xsd:maxInclusive value="100.00" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="MoneyValue">
+        <xsd:restriction base="xsd:decimal">
+            <xsd:totalDigits value="18"/>
+            <xsd:fractionDigits value="2"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="DepositType">
+        <xsd:restriction base="Char1">
+            <xsd:enumeration value="S" />
+            <xsd:enumeration value="R" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="YesNoFlag">
+        <xsd:restriction base="Char1">
+            <xsd:enumeration value="N" />
+            <xsd:enumeration value="Y" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="GenderCharType">
+        <xsd:restriction base="Char1">
+            <xsd:enumeration value="M" />
+            <xsd:enumeration value="F" />
+            <xsd:enumeration value="N" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="MoneyValuePositive">
+        <xsd:restriction base="xsd:decimal">
+            <xsd:totalDigits value="18"/>
+            <xsd:fractionDigits value="2"/>
+            <xsd:minExclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="DoublePercent0to100">
+        <xsd:restriction base="xsd:double">
+            <xsd:minInclusive value="0" />
+            <xsd:maxInclusive value="100" />
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

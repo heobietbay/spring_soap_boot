@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.khoatrandang.learn/demo/vn/request/1.0"
+            xmlns="http://www.khoatrandang.learn/demo/vn/request/1.0"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:com="http://www.khoatrandang.learn/demo/common/1.0"
+            xmlns:dom="http://www.khoatrandang.learn/demo/vn/domain/common/1.0"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="http://www.khoatrandang.learn/demo/common/1.0"
+                schemaLocation="../../../common/1.0/COM_DataTypes.xsd"/>
+
+    <xsd:import namespace="http://www.khoatrandang.learn/demo/vn/domain/common/1.0"
+                schemaLocation="../../domain/1.0/COM_DomainCommon.xsd"/>
+
+    <xsd:element name="RequestIllustration" type="RequestIllustrationType">
+    </xsd:element>
+    <xsd:complexType name="RequestIllustrationType">
+        <xsd:sequence>
+            <xsd:element name="setupOnly" type="xsd:boolean" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="username" type="xsd:string" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="partyTypeId" type="dom:PartyTypeId" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="illustrationType" type="dom:IllustrationType" minOccurs="1">
+            </xsd:element>
+            <xsd:element name="investorId" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:choice minOccurs="0">
+                <xsd:element name="memberAccountId" type="xsd:int" minOccurs="0">
+                </xsd:element>
+                <xsd:element name="memberAccountRef" type="xsd:string" minOccurs="0">
+                </xsd:element>
+            </xsd:choice>
+            <xsd:element name="masterMemberAccountId" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="productTypeId" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="outputTypeRequired" default="P">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="P"/>
+                        <xsd:enumeration value="B"/>
+                        <xsd:enumeration value="S"/>
+                        <xsd:enumeration value="F"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <xsd:element name="employerGroupId" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="illustrationPayload" type="IllustrationPayloadType" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="incomeRequired" type="xsd:boolean" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="targetIDDAccountId" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="contributionType" type="com:DepositType" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="clientSpecificValues" minOccurs="0" >
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="clientSpecificValue" type="ClientSpecificValue" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="investmentModelSelected" type="com:YesNoFlag" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="fullCrystallization" type="com:YesNoFlag" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="IllustrationPayloadType">
+        <xsd:annotation>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="quoteType" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="planStartDate" type="xsd:date" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="illustrationDate" type="xsd:date" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="incomeStartDate" type="xsd:date" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="targetIncomeType" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="incomeFrequency" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="targetTfcAmount" type="xsd:double" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="targetTfcPercentage" type="com:DoublePercent0to100" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="targetCrystallisedAmount" type="xsd:double" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="vestedpercentagegad" type="xsd:double" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="targetIncreaseMethod" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="incomeAmount" type="xsd:double" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="incomeEscalation" type="com:DoublePercent0to100" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="finalAnnuityDate" type="xsd:date" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="flexibleIncome" type="xsd:boolean" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="annuityEscalationType" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="annuityEscalation" type="com:DoublePercent0to100" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="annuitySpousePension" type="com:DoublePercent0to100" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="annuityGuaranteePeriod" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="annuityFrequency" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="annuityTiming" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="memberDetails" minOccurs="1">
+                <xsd:complexType>
+                    <xsd:all>
+                        <xsd:element name="adviserAccountId" type="xsd:int" minOccurs="0">
+                        </xsd:element>
+                        <xsd:element name="adviserName" type="xsd:string" minOccurs="0">
+                        </xsd:element>
+                        <xsd:element name="branchName" type="xsd:string" minOccurs="0">
+                        </xsd:element>
+                        <xsd:element name="networkName" type="xsd:string" minOccurs="0">
+                        </xsd:element>
+                        <xsd:element name="adviceGiven" type="com:Char1" minOccurs="0">
+                        </xsd:element>
+                        <xsd:element name="investorId" type="xsd:int" minOccurs="0"/>
+                        <xsd:element name="personalDetails" type="IllustrationPersonalDetailsType" minOccurs="1"/>
+                        <xsd:element name="spouseDetails" type="IllustrationPersonalDetailsType" minOccurs="0"/>
+                    </xsd:all>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="contributions">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="contribution" type="IllustrationContributionType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="funds">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="fund" type="IllustrationFundType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="productCharges">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="charge" type="IllustrationChargesType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="tranches">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tranche" type="IllustrationTrancheType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="protection" type="IllustrationProtectionType" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dependantsIllustration" type="xsd:int" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="clientRequestRequired" type="xsd:boolean" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="clientRequest" type="dom:clientRequestType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>This complex element holds the generic information needed to produce a SRI Illustration. </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="mixedContribution" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="wrapAccountValuation" type="xsd:double" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="totalInvestment" type="com:MoneyValue" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="totalInitialCharge" type="com:MoneyValue" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="totalInitialCommission" type="com:MoneyValue" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="taxFreeLumpSum" type="com:MoneyValue" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="taxedLumpSum" type="com:MoneyValue" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="totalSubAccounts" type="com:MoneyValuePositive" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="additionalClientData" type="AdditionalClientDataType" minOccurs="0">
+            </xsd:element>
+        </xsd:all>
+    </xsd:complexType>
+
+    <xsd:complexType name="IllustrationPersonalDetailsType">
+        <xsd:all>
+            <xsd:element name="title" type="xsd:string" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="firstName" type="xsd:string" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="surname" type="xsd:string" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="gender" type="com:GenderCharType" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="dateOfBirth" type="xsd:date" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="protectedAge" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="grossSalary" type="xsd:double" minOccurs="0">
+            </xsd:element>
+        </xsd:all>
+    </xsd:complexType>
+
+    <xsd:complexType name="IllustrationContributionType">
+        <xsd:all>
+            <xsd:element name="startDate" type="xsd:date" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="amount" type="xsd:double" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="contributionType" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="escalationType" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="escalationValue" type="xsd:double" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="frequency" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="protectedRights" type="xsd:boolean" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="calculationType" type="xsd:int" minOccurs="0">
+            </xsd:element>
+        </xsd:all>
+    </xsd:complexType>
+
+    <xsd:complexType name="IllustrationFundType">
+        <xsd:all>
+            <xsd:element name="portfolioId" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="fundValue" type="xsd:double" minOccurs="0">
+            </xsd:element>
+        </xsd:all>
+    </xsd:complexType>
+
+    <xsd:complexType name="IllustrationChargesType">
+        <xsd:all>
+            <xsd:element name="description" type="xsd:string" minOccurs="1" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="chargeTypeCode" type="xsd:string" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="chargeValue" type="xsd:double" minOccurs="1" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="calculationType" type="xsd:integer" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="frequency" type="xsd:integer" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="endMonth" type="xsd:integer" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="escalationType" type="xsd:integer" minOccurs="0" >
+            </xsd:element>
+            <xsd:element name="escalationValue" type="xsd:decimal" minOccurs="0" >
+            </xsd:element>
+        </xsd:all>
+    </xsd:complexType>
+
+    <xsd:complexType name="IllustrationTrancheType">
+        <xsd:sequence>
+            <xsd:element name="currentValue" type="xsd:double">
+            </xsd:element>
+            <xsd:element name="gadMaxValue" type="xsd:double">
+            </xsd:element>
+            <xsd:element name="lastReviewDate" type="xsd:date">
+            </xsd:element>
+            <xsd:element name="incomeTaken" type="xsd:double" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="type" type="xsd:int" default="0">
+            </xsd:element>
+            <xsd:element name="additionalFunds" type="xsd:double" default="0">
+            </xsd:element>
+            <xsd:element name="additionalTfc" type="xsd:double" default="0">
+            </xsd:element>
+            <xsd:element name="reviewLimitsNow" type="xsd:boolean" default="0">
+            </xsd:element>
+            <xsd:element name="protectedRights" type="xsd:boolean" default="0">
+            </xsd:element>
+            <xsd:element name="subAccountFlag" type="com:YesNoFlag"  minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="illSubAccountTypeId" type="xsd:int" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="subAnnualIncome" type="com:MoneyValue"  minOccurs="0" maxOccurs="1">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="IllustrationProtectionType">
+        <xsd:all>
+            <xsd:element name="type" type="xsd:int" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="pla" type="com:MoneyValue" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="ssls" type="xsd:double" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="enhancedProtection" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="primaryProtection" type="xsd:int" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="enhancedTfc" type="xsd:double" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="ltaEnhancement" type="xsd:double" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="protectedTfc" type="xsd:double" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+        </xsd:all>
+    </xsd:complexType>
+
+    <xsd:complexType name="ClientSpecificValue">
+        <xsd:sequence>
+            <xsd:element name="shortCode" type="com:Max20Text" minOccurs="1" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="qualifierValue" type="com:Max20Text" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="value" type="com:Max40Text" minOccurs="1" maxOccurs="1">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AdditionalClientDataType">
+        <xsd:all>
+            <xsd:element name="healthStatus" type="com:Max20Text" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="percentQualifyingAssets" type="com:DoublePercent0to100" minOccurs="0"
+                         maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="qualifyingPolicy" type="com:Char1" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="plusPolicy" type="com:Char1" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="statusBasedCharges" type="dom:IllustrationValueStatusChargeDetailType" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="unCrystallisedAmount" type="xsd:double" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="qualifyingOpeningBalances">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="qualifyingOpeningBalance"
+                                     type="dom:QualifyingOpeningBalanceType" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="accumulationBoostInvestmentTerm" type="xsd:int" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation> The investment term of the accumulation boost.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ribTermYears" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="ribPayableFirstYear" type="xsd:int" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="ribMinIncomePercent" type="com:DoublePercent0to100" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="ribPrevPayouts" type="com:MoneyValue" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="ribPrevOpenBal" type="com:MoneyValue" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="accumulationBoostVersionId" type="com:MoneyValue" minOccurs="0">
+            </xsd:element>
+            <xsd:element name="incomeBoostVersionId" type="com:MoneyValue" minOccurs="0">
+            </xsd:element>
+        </xsd:all>
+    </xsd:complexType>
+</xsd:schema>

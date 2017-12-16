@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+        targetNamespace="http://www.khoatrandang.learn/cbis/services/RequestIllustration/1.0"
+        xmlns:tns="http://www.khoatrandang.learn/cbis/services/RequestIllustration/1.0"
+        xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+        xmlns:req="http://www.khoatrandang.learn/demo/vn/request/1.0"
+        xmlns:rsp="http://www.khoatrandang.learn/demo/vn/response/1.0"
+>
+
+    <wsdl:documentation>INTERNAL USE</wsdl:documentation>
+
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://www.khoatrandang.learn/demo/vn/request/1.0">
+            <xsd:include schemaLocation="schemas/vn/request/1.0/RequestIllustration.xsd"/>
+        </xsd:schema>
+        <xsd:schema targetNamespace="http://www.khoatrandang.learn/demo/vn/response/1.0">
+            <xsd:include schemaLocation="schemas/vn/response/1.0/IllustrationResponse.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="IllustrationRequest">
+        <wsdl:part name="body" element="req:RequestIllustration"/>
+    </wsdl:message>
+
+    <wsdl:message name="IllustrationResponse">
+        <wsdl:part name="body" element="rsp:IllustrationResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="IllustrationRequestPortType">
+        <wsdl:operation name="IllustrationRequest">
+            <wsdl:input message="tns:IllustrationRequest"/>
+            <wsdl:output message="tns:IllustrationResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="IllustrationRequestBinding" type="tns:IllustrationRequestPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="IllustrationRequest">
+            <soap:operation soapAction="http://www.khoatrandang.learn/cbis/services/RequestIllustration/1.0"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="IllustrationRequestService">
+        <wsdl:port name="IllustrationRequestServicePort" binding="tns:IllustrationRequestBinding">
+            <soap:address location="http://localhost:8080/ws/"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

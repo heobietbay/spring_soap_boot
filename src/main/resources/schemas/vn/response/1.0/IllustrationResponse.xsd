@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.khoatrandang.learn/demo/vn/response/1.0"
+            xmlns="http://www.khoatrandang.learn/demo/vn/response/1.0"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+
+    <xsd:element name="IllustrationResponse" type="IllustrationResponseType">
+        <xsd:annotation>
+            <xsd:documentation> The response message to an RequestIllustration message.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="IllustrationResponseType">
+        <xsd:sequence>
+            <xsd:annotation>
+                <xsd:documentation> The type to receive the CBIS Illustration response.
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:element name="responseDetails" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation> The response detail</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="IllustrationDataResponse" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="IllustrationDataResponse">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="illustrationId">
+                    <xsd:sequence>
+                        <xsd:element name="illustrationType" type="xsd:string"/>
+                        <xsd:element name="immediateannuity" type="xsd:double"/>
+                        <xsd:element ref="lumpsum"/>
+                        <xsd:element name="providerName" type="xsd:string"/>
+                        <xsd:element name="illustrationFromDate" type="xsd:date"/>
+                        <xsd:element name="illustrationRetirementDate" type="xsd:date"/>
+                        <xsd:element name="currMaxPension" type="xsd:double"/>
+                        <xsd:element name="flexiblePensionFlag" type="xsd:string"/>
+                        <xsd:element name="paymentAmount" type="xsd:double"/>
+                        <xsd:element name="assumedMaxLta" type="xsd:double"/>
+                        <xsd:element name="preferredRetirementAge" type="xsd:int"/>
+                        <xsd:element ref="memberDetails"/>
+                        <xsd:element name="smpiIllustration" type="illustrationId"/>
+                        <xsd:element ref="illustrations"/>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="memberDetails">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="personalDetails"/>
+                <xsd:element ref="healthStatus"/>
+                <xsd:element name="percentQualifyingAssets" type="xsd:int"/>
+                <xsd:element name="qualifyingPolicy" type="xsd:string"/>
+                <xsd:element name="plusPolicy" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="personalDetails">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="title" type="xsd:string"/>
+                <xsd:element name="firstname" type="xsd:string"/>
+                <xsd:element name="surname" type="xsd:string"/>
+                <xsd:element name="gender" type="xsd:string"/>
+                <xsd:element name="dateofbirth" type="xsd:date"/>
+                <xsd:element name="advisername" type="xsd:string"/>
+                <xsd:element name="branchname" type="xsd:string"/>
+                <xsd:element name="networkname" type="xsd:string"/>
+                <xsd:element name="advicegiven" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="illustrations">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" ref="illustration"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="illustration">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="growthType"/>
+                <xsd:element ref="growthRate"/>
+                <xsd:element minOccurs="0" ref="type"/>
+                <xsd:element ref="projectedfund"/>
+                <xsd:element ref="annuity"/>
+                <xsd:element ref="lumpsum"/>
+                <xsd:element ref="reducedannuity"/>
+                <xsd:element minOccurs="0" ref="longTermCapitalBoost"/>
+                <xsd:element ref="crystallisedProjection"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="growthType" type="xsd:string"/>
+    <xsd:element name="growthRate" type="xsd:double"/>
+    <xsd:element name="type" type="xsd:string"/>
+    <xsd:element name="projectedfund" type="xsd:double"/>
+    <xsd:element name="reducedannuity" type="xsd:double"/>
+    <xsd:element name="longTermCapitalBoost" type="xsd:int"/>
+    <xsd:element name="crystallisedProjection">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="summary"/>
+                <xsd:element ref="projectedBenefits"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="summary">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="term"/>
+                <xsd:element ref="openmarketvalue"/>
+                <xsd:element ref="annuity"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="term" type="xsd:int"/>
+    <xsd:element name="openmarketvalue" type="xsd:double"/>
+    <xsd:element name="projectedBenefits">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" ref="projectedBenefit"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="projectedBenefit">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="rowdescription"/>
+                <xsd:element ref="fund"/>
+                <xsd:element ref="maximumIncome"/>
+                <xsd:element ref="requestedIncome"/>
+                <xsd:element ref="actualIncome"/>
+                <xsd:element ref="inflationFund"/>
+                <xsd:element ref="inflationMaximumIncome"/>
+                <xsd:element ref="inflationRequestedIncome"/>
+                <xsd:element ref="inflationActualIncome"/>
+                <xsd:element ref="age"/>
+                <xsd:element ref="adjustedPensionFund"/>
+                <xsd:element ref="incomeBoost"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="rowdescription" type="xsd:int"/>
+    <xsd:element name="fund" type="xsd:double"/>
+    <xsd:element name="maximumIncome" type="xsd:double"/>
+    <xsd:element name="requestedIncome" type="xsd:double"/>
+    <xsd:element name="actualIncome" type="xsd:double"/>
+    <xsd:element name="inflationFund" type="xsd:double"/>
+    <xsd:element name="inflationMaximumIncome" type="xsd:double"/>
+    <xsd:element name="inflationRequestedIncome" type="xsd:double"/>
+    <xsd:element name="inflationActualIncome" type="xsd:double"/>
+    <xsd:element name="age" type="xsd:int"/>
+    <xsd:element name="adjustedPensionFund" type="xsd:double"/>
+    <xsd:element name="incomeBoost" type="xsd:int"/>
+    <xsd:element name="yearProjected">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="value" type="xsd:int"/>
+                <xsd:element name="amount" type="xsd:double"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="annuityYield" type="xsd:double"/>
+    <xsd:element name="pensionRates">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="lowrate" type="xsd:double"/>
+                <xsd:element name="medrate" type="xsd:double"/>
+                <xsd:element name="highrate" type="xsd:double"/>
+                <xsd:element name="smpirate" type="xsd:double"/>
+                <xsd:element name="currrate" type="xsd:double"/>
+                <xsd:element name="assumedInflationRate" type="xsd:double"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="contribution">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="startDate"/>
+                <xsd:element ref="paymentType"/>
+                <xsd:element ref="amount"/>
+                <xsd:element ref="frequency"/>
+                <xsd:element ref="escalation"/>
+                <xsd:element ref="taxReliefAmount"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="startDate" type="xsd:date"/>
+    <xsd:element name="paymentType" type="xsd:string"/>
+    <xsd:element name="amount" type="xsd:double"/>
+    <xsd:element name="escalation" type="xsd:double"/>
+    <xsd:element name="taxReliefAmount" type="xsd:double"/>
+    <xsd:element name="productCharges">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" ref="charge"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="charge">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="description"/>
+                <xsd:element name="chargeValue" type="xsd:double"/>
+                <xsd:element ref="frequency"/>
+                <xsd:element name="calculationType" type="xsd:int"/>
+                <xsd:element minOccurs="0" ref="endMonth"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="endMonth" type="xsd:int"/>
+    <xsd:element name="commissionAmount" type="xsd:double"/>
+    <xsd:element name="projectedFunds">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" ref="projectedFund"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="projectedFund">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="projectedYear"/>
+                <xsd:element ref="projectedValuewithoutBoost"/>
+                <xsd:element ref="projectedValueBoost"/>
+                <xsd:element ref="projectedValuewithBoost"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="projectedYear" type="xsd:int"/>
+    <xsd:element name="projectedValuewithoutBoost" type="xsd:int"/>
+    <xsd:element name="projectedValueBoost" type="xsd:int"/>
+    <xsd:element name="projectedValuewithBoost" type="xsd:int"/>
+    <xsd:element name="Status" type="xsd:string"/>
+    <xsd:element name="projectedFundValue" type="xsd:int"/>
+    <xsd:element name="increaseOnBasicStatus" type="xsd:int"/>
+    <xsd:element name="benefitOfReducedFee" type="xsd:int"/>
+    <xsd:complexType name="illustrationId">
+        <xsd:sequence>
+            <xsd:element ref="illustrationId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="illustrationId" type="xsd:int"/>
+    <xsd:element name="lumpsum" type="xsd:double"/>
+    <xsd:element name="healthStatus" type="xsd:string"/>
+    <xsd:element name="annuity" type="xsd:double"/>
+    <xsd:element name="description" type="xsd:string"/>
+    <xsd:element name="criticalYield" type="xsd:double"/>
+    <xsd:element name="frequency" type="xsd:string"/>
+</xsd:schema>
