@@ -5,17 +5,9 @@
             elementFormDefault="qualified">
 
     <xsd:element name="IllustrationResponse" type="IllustrationResponseType">
-        <xsd:annotation>
-            <xsd:documentation> The response message to an RequestIllustration message.
-            </xsd:documentation>
-        </xsd:annotation>
     </xsd:element>
     <xsd:complexType name="IllustrationResponseType">
         <xsd:sequence>
-            <xsd:annotation>
-                <xsd:documentation> The type to receive the CBIS Illustration response.
-                </xsd:documentation>
-            </xsd:annotation>
             <xsd:element name="responseDetails" minOccurs="0" maxOccurs="1">
                 <xsd:annotation>
                     <xsd:documentation> The response detail</xsd:documentation>
