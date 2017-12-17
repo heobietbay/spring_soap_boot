@@ -1,4 +1,4 @@
-package app;
+package app.configuration;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +16,7 @@ import org.springframework.ws.wsdl.wsdl11.Wsdl11Definition;
 
 @EnableWs
 @Configuration
-@Import(SchemaConfig.class)
+@Import({SchemaConfig.class,SoapServerConfig.class})
 public class WebServiceConfig extends WsConfigurerAdapter {
     /**
      * Need to configure all the needed schema, so that when client discovers wsdl
